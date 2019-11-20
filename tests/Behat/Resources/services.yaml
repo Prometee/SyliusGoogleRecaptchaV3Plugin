@@ -1,0 +1,21 @@
+services:
+
+  Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\AbstractCaptchaContext:
+    public: true
+    abstract: true
+    arguments:
+      $registerElement: '@sylius.behat.element.shop.account.register'
+
+
+  Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\ContactContext:
+    public: true
+    parent: Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\AbstractCaptchaContext
+    arguments: Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\AbstractCaptchaContext
+      $contactPage: '@sylius.behat.page.shop.contact'
+
+
+  Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\RegistrationContext:
+    public: true
+    parent: Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\AbstractCaptchaContext
+    arguments:
+      $registerPage: '@sylius.behat.page.shop.account.register'

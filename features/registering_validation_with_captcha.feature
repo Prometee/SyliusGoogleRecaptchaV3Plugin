@@ -1,5 +1,5 @@
-@customer_registration
-Feature: Account registration
+@customer_registration_with_captcha
+Feature: Account registration with captcha
     In order to avoid robot registration
     As a Visitor
     I want to be prevented from creating an account

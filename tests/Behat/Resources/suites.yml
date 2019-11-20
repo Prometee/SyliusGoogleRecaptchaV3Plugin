@@ -2,15 +2,16 @@
 
 default:
     suites:
-        customer_registration:
+        requesting_contact_with_captcha:
             contexts:
-                - Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\CaptchaContext
+                - Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\ContactContext
 
             filters:
-                tags: "@customer_registration"
-        requesting_contact:
+                tags: "@requesting_contact_with_captcha"
+
+        customer_registration_with_captcha:
             contexts:
-                - Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\CaptchaContext
+                - Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\RegistrationContext
 
             filters:
-                tags: "@requesting_contact"
+                tags: "@customer_registration_with_captcha"

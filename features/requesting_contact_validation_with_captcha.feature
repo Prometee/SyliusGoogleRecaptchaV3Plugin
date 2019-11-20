@@ -1,5 +1,5 @@
-@requesting_contact
-Feature: Requesting contact validation
+@requesting_contact_with_captcha
+Feature: Requesting contact validation with captcha
     In order to avoid robot contact
     As a Customer
     I want to be prevented from robots making contact request
