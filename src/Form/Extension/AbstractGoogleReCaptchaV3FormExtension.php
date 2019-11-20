@@ -23,10 +23,10 @@ abstract class AbstractGoogleReCaptchaV3FormExtension extends AbstractTypeExtens
 
     /**
      * @param bool $enabled
-     * @param array $validationGroups
+     * @param string[]|null $validationGroups
      * @param string|null $actionName
      */
-    public function __construct(bool $enabled, array $validationGroups = null, string $actionName = null)
+    public function __construct(bool $enabled, ?array $validationGroups = null, string $actionName = null)
     {
         $this->enabled = $enabled;
         $this->actionName = $actionName;
