@@ -20,7 +20,7 @@ services:
   app.sylius.recaptcha.block_event_listener.shop.google_recaptcha_v3.form:
     class: Sylius\Bundle\UiBundle\Block\BlockEventListener
     arguments:
-      $template: 'GoogleReCaptchaV3/form.html.twig'
+      $template: '@PrometeeSyliusGoogleRecaptchaV3Plugin/form.html.twig'
     tags:
       - { name: kernel.event_listener, event: sonata.block.event.sylius.shop.contact.request.form, method: onBlockEvent}
       - { name: kernel.event_listener, event: sonata.block.event.sylius.shop.register.form, method: onBlockEvent}
