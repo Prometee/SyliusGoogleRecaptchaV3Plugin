@@ -4,16 +4,20 @@ default:
     suites:
         ui_requesting_contact_with_captcha:
             contexts:
-                - Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\CaptchaContext
+                - sylius.behat.context.setup.channel
+
                 - sylius.behat.context.ui.shop.contact
+                - Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\CaptchaContext
 
             filters:
                 tags: "@requesting_contact_with_captcha && @ui"
 
         ui_customer_registration_with_captcha:
             contexts:
-                - Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\CaptchaContext
+                - sylius.behat.context.setup.channel
+
                 - sylius.behat.context.ui.shop.registration
+                - Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\CaptchaContext
 
             filters:
                 tags: "@customer_registration_with_captcha && @ui"
