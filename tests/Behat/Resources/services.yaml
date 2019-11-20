@@ -10,7 +10,7 @@ services:
   Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\ContactContext:
     public: true
     parent: Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\AbstractCaptchaContext
-    arguments: Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\AbstractCaptchaContext
+    arguments:
       $contactPage: '@sylius.behat.page.shop.contact'
 
 
