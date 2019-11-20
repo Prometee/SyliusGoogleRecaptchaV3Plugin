@@ -4,6 +4,8 @@ default:
     suites:
         ui_requesting_contact_with_captcha:
             contexts:
+                - sylius.behat.context.hook.doctrine_orm
+
                 - sylius.behat.context.setup.channel
 
                 - sylius.behat.context.ui.shop.contact
@@ -14,6 +16,8 @@ default:
 
         ui_customer_registration_with_captcha:
             contexts:
+                - sylius.behat.context.hook.doctrine_orm
+
                 - sylius.behat.context.setup.channel
 
                 - sylius.behat.context.ui.shop.registration
