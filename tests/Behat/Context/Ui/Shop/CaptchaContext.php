@@ -9,7 +9,7 @@ use Behat\Mink\Exception\ElementNotFoundException;
 use Sylius\Behat\Element\Shop\Account\RegisterElementInterface;
 use Webmozart\Assert\Assert;
 
-abstract class AbstractCaptchaContext implements Context
+final class CaptchaContext implements Context
 {
 
     /** @var RegisterElementInterface */
