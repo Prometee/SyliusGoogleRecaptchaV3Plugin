@@ -1,0 +1,26 @@
+services:
+
+  Prometee\SyliusGoogleRecaptchaV3Plugin\Form\Extension\AbstractGoogleReCaptchaV3FormExtension:
+    abstract: true
+    arguments:
+      $enabled: '%karser_recaptcha3.enabled%'
+
+  Prometee\SyliusGoogleRecaptchaV3Plugin\Form\Extension\ContactFormExtension:
+    parent: Prometee\SyliusGoogleRecaptchaV3Plugin\Form\Extension\AbstractGoogleReCaptchaV3FormExtension
+    tags:
+      - { name: form.type_extension }
+
+  Prometee\SyliusGoogleRecaptchaV3Plugin\Form\Extension\CustomerRegistrationFormExtension:
+    parent: Prometee\SyliusGoogleRecaptchaV3Plugin\Form\Extension\AbstractGoogleReCaptchaV3FormExtension
+    arguments:
+      $validationGroups: '%sylius.form.type.customer_registration.validation_groups%'
+    tags:
+      - { name: form.type_extension }
+
+  app.sylius.recaptcha.block_event_listener.shop.google_recaptcha_v3.form:
+    class: Sylius\Bundle\UiBundle\Block\BlockEventListener
+    arguments:
+      $template: 'GoogleReCaptchaV3/form.html.twig'
+    tags:
+      - { name: kernel.event_listener, event: sonata.block.event.sylius.shop.contact.request.form, method: onBlockEvent}
+      - { name: kernel.event_listener, event: sonata.block.event.sylius.shop.register.form, method: onBlockEvent}

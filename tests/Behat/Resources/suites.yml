@@ -1,0 +1,16 @@
+# Put your Behat suites definitions here
+
+default:
+    suites:
+        customer_registration:
+            contexts:
+                - Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\CaptchaContext
+
+            filters:
+                tags: "@customer_registration"
+        requesting_contact:
+            contexts:
+                - Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\CaptchaContext
+
+            filters:
+                tags: "@requesting_contact"
