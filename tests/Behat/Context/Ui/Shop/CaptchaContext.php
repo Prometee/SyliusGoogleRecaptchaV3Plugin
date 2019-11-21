@@ -6,6 +6,7 @@ namespace Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop;
 
 use Behat\Behat\Context\Context;
 use Behat\Mink\Exception\ElementNotFoundException;
+use Exception;
 use Sylius\Behat\Element\Shop\Account\RegisterElementInterface;
 use Webmozart\Assert\Assert;
 
@@ -21,6 +22,14 @@ final class CaptchaContext implements Context
     public function __construct(RegisterElementInterface $registerElement)
     {
         $this->registerElement = $registerElement;
+    }
+
+    /**
+     * @BeforeScenario
+     */
+    public function waitForJavascript()
+    {
+        sleep(2);
     }
 
     /**

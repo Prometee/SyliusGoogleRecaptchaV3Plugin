@@ -52,7 +52,6 @@ abstract class AbstractGoogleReCaptchaV3FormExtension extends AbstractTypeExtens
 
         $builder->add('captcha', Recaptcha3Type::class, [
             'mapped' => false,
-            'required' => true,
             'constraints' => $constraints,
             'action_name' => $this->actionName,
         ]);
