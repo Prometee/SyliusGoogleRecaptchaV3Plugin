@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop;
 
 use Behat\Behat\Context\Context;
+use Behat\Behat\Hook\Scope\BeforeStepScope;
 use Behat\Mink\Exception\ElementNotFoundException;
-use Exception;
+use Behat\Behat\Event\StepEvent;
 use Sylius\Behat\Element\Shop\Account\RegisterElementInterface;
 use Webmozart\Assert\Assert;
 
@@ -25,11 +26,16 @@ final class CaptchaContext implements Context
     }
 
     /**
-     * @BeforeScenario
+     * @BeforeStep
+     *
+     * @param BeforeStepScope $scope
      */
-    public function waitForJavascript()
+    public function waitForJavascript(BeforeStepScope $scope)
     {
-        sleep(2);
+        $stepText = $scope->getStep()->getText();
+        if (preg_match('#^I try to#', $stepText)) {
+            sleep(2);
+        }
     }
 
     /**

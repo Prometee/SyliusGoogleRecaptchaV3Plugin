@@ -10,7 +10,6 @@ Feature: Account registration with captcha
     @ui
     Scenario: Trying to register a new account with robot score
         When I want to register a new account
-        And I do not specify the first name
         And I specify the first name as "Saul"
         And I specify the last name as "Goodman"
         And I specify the email as "goodman@gmail.com"
