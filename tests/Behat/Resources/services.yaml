@@ -1,6 +1,13 @@
 services:
 
-  Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\CaptchaContext:
+  prometee.sylius.google.recaptcha.v3.behat.context.ui.shop.registration:
     public: true
+    class: Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\CaptchaContext
     arguments:
-      $registerElement: '@sylius.behat.element.shop.account.register'
+      $page: '@sylius.behat.page.shop.account.register'
+
+  prometee.sylius.google.recaptcha.v3.behat.context.ui.shop.contact:
+    public: true
+    class: Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop\CaptchaContext
+    arguments:
+      $page: '@sylius.behat.page.shop.contact'

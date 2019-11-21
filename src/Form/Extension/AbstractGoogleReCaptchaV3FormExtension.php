@@ -46,6 +46,7 @@ abstract class AbstractGoogleReCaptchaV3FormExtension extends AbstractTypeExtens
         $constraints = [
             new Recaptcha3($validatorOptions),
         ];
+
         if ($this->enabled) {
             $constraints[] = new NotBlank($validatorOptions);
         }

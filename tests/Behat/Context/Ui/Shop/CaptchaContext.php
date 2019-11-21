@@ -5,57 +5,29 @@ declare(strict_types=1);
 namespace Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop;
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Hook\Scope\BeforeStepScope;
-use Behat\Mink\Exception\ElementNotFoundException;
-use Behat\Behat\Event\StepEvent;
-use Sylius\Behat\Element\Shop\Account\RegisterElementInterface;
-use Webmozart\Assert\Assert;
+use FriendsOfBehat\PageObjectExtension\Page\PageInterface;
+use FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException;
 
 final class CaptchaContext implements Context
 {
-
-    /** @var RegisterElementInterface */
-    private $registerElement;
+    /** @var PageInterface */
+    private $page;
 
     /**
-     * @param RegisterElementInterface $registerElement
+     * @param PageInterface $page
      */
-    public function __construct(RegisterElementInterface $registerElement)
+    public function __construct(PageInterface $page)
     {
-        $this->registerElement = $registerElement;
+        $this->page = $page;
     }
 
     /**
-     * @BeforeStep
+     * @Then /^I should stay on the same page$/
      *
-     * @param BeforeStepScope $scope
+     * @throws UnexpectedPageException
      */
-    public function waitForJavascript(BeforeStepScope $scope)
+    public function iShouldStayOnTheSamePage()
     {
-        $stepText = $scope->getStep()->getText();
-        if (preg_match('#^I try to#', $stepText)) {
-            sleep(2);
-        }
-    }
-
-    /**
-     * @Then /^I should be notified that I am a robot$/
-     *
-     * @throws ElementNotFoundException
-     */
-    public function iShouldBeNotifiedThatIAmARobot()
-    {
-        $this->assertFieldValidationMessage('captcha', 'Your computer or network may be sending automated queries');
-    }
-
-    /**
-     * @param string $element
-     * @param string $expectedMessage
-     *
-     * @throws ElementNotFoundException
-     */
-    private function assertFieldValidationMessage(string $element, string $expectedMessage): void
-    {
-        Assert::true($this->registerElement->checkValidationMessageFor($element, $expectedMessage));
+        $this->page->verify();
     }
 }

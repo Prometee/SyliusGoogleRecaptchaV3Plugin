@@ -7,7 +7,7 @@ Feature: Account registration with captcha
     Background:
         Given the store operates on a single channel in "United States"
 
-    @ui
+    @ui @javascript
     Scenario: Trying to register a new account with robot score
         When I want to register a new account
         And I specify the first name as "Saul"
@@ -16,5 +16,6 @@ Feature: Account registration with captcha
         And I specify the password as "heisenberg"
         And I confirm this password
         And I try to register this account
-        Then I should be notified that I am a robot
+        # No error appears because it's an hidden field but the form is not validated
+        Then I should stay on the same page
         And I should not be logged in
