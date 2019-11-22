@@ -12,7 +12,7 @@ default:
 
                 - sylius.behat.context.ui.email
                 - sylius.behat.context.ui.shop.contact
-                - prometee.sylius.google.recaptcha.v3.behat.context.ui.shop.registration
+                - prometee.sylius.google.recaptcha.v3.behat.context.ui.shop.contact
 
             filters:
                 tags: "@requesting_contact_with_captcha && @ui"
@@ -29,7 +29,7 @@ default:
 
                 - sylius.behat.context.ui.email
                 - sylius.behat.context.ui.shop.registration
-                - prometee.sylius.google.recaptcha.v3.behat.context.ui.shop.contact
+                - prometee.sylius.google.recaptcha.v3.behat.context.ui.shop.registration
 
             filters:
                 tags: "@customer_registration_with_captcha && @ui"
