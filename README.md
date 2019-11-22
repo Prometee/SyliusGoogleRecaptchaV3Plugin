@@ -1,88 +1,67 @@
-<p align="center">
-    <a href="https://sylius.com" target="_blank">
-        <img src="https://demo.sylius.com/assets/shop/img/logo.png" />
-    </a>
-</p>
+[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Software License][ico-license]](LICENSE)
+[![Build Status][ico-travis]][link-travis]
+[![Quality Score][ico-code-quality]][link-code-quality]
 
-<h1 align="center">Plugin Skeleton</h1>
+# Sylius Plugin adding Google Recaptcha V3 integration
 
-<p align="center">Skeleton for starting Sylius plugins.</p>
+This plugin is adding Google Recaptcha V3 to the following forms :
+
+- Contact form
+- Registration form
+
+But an abstract class is available to add the captcha field to any other `Form\Extension`
 
 ## Installation
 
-1. Run `composer create-project sylius/plugin-skeleton ProjectName`.
+```bash
+composer require prometee/sylius-google-recaptcha-v3-plugin
+```
+## Configuration
 
-2. From the plugin skeleton root directory, run the following commands:
+Enable this plugin :
 
-    ```bash
-    $ (cd tests/Application && yarn install)
-    $ (cd tests/Application && yarn build)
-    $ (cd tests/Application && bin/console assets:install public -e test)
-    
-    $ (cd tests/Application && bin/console doctrine:database:create -e test)
-    $ (cd tests/Application && bin/console doctrine:schema:create -e test)
-    ```
+```php
+<?php
 
-To be able to setup a plugin's database, remember to configure you database credentials in `tests/Application/.env` and `tests/Application/.env.test`.
+# config/bundles.php
 
-## Usage
+return [
+    // ...
+    Prometee\SyliusGoogleRecaptchaV3Plugin\PrometeeSyliusGoogleRecaptchaV3Plugin::class => ['all' => true],
+    // ...
+];
+```
 
-### Running plugin tests
+This plugin is using the `karser/karser-recaptcha3-bundle` to handle the validation of the
+Google Recaptcha V3, so a little configuration have to be made.
+Add or modify the `karser/karser-recaptcha3-bundle` configuration :
 
-  - PHPUnit
+```yaml
+# config/packages/karser_recaptcha3.yaml
 
-    ```bash
-    $ vendor/bin/phpunit
-    ```
+karser_recaptcha3:
+    site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
+    secret_key: '%env(GOOGLE_RECAPTCHA_SECRET)%'
+    score_threshold: 0.5
 
-  - PHPSpec
+```
 
-    ```bash
-    $ vendor/bin/phpspec run
-    ```
+Finally add your site key and secret to your `.env.local` file :
 
-  - Behat (non-JS scenarios)
+```dotenv
+###> google/recaptcha ###
+GOOGLE_RECAPTCHA_SITE_KEY=my_site_key
+GOOGLE_RECAPTCHA_SECRET=my_secret
+###< google/recaptcha ###
+```
 
-    ```bash
-    $ vendor/bin/behat --tags="~@javascript"
-    ```
+[ico-version]: https://img.shields.io/packagist/v/Prometee/sylius-google-recaptcha-v3-plugin.svg?style=flat-square
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/Prometee/SyliusGoogleRecaptchaV3Plugin/master.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/Prometee/SyliusGoogleRecaptchaV3Plugin.svg?style=flat-square
 
-  - Behat (JS scenarios)
- 
-    1. Download [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/)
-    
-    2. Download [Selenium Standalone Server](https://www.seleniumhq.org/download/).
-    
-    2. Run Selenium server with previously downloaded Chromedriver:
-    
-        ```bash
-        $ java -Dwebdriver.chrome.driver=chromedriver -jar selenium-server-standalone.jar
-        ```
-        
-    3. Run test application's webserver on `localhost:8080`:
-    
-        ```bash
-        $ (cd tests/Application && bin/console server:run localhost:8080 -d public -e test)
-        ```
-    
-    4. Run Behat:
-    
-        ```bash
-        $ vendor/bin/behat --tags="@javascript"
-        ```
-
-### Opening Sylius with your plugin
-
-- Using `test` environment:
-
-    ```bash
-    $ (cd tests/Application && bin/console sylius:fixtures:load -e test)
-    $ (cd tests/Application && bin/console server:run -d public -e test)
-    ```
-    
-- Using `dev` environment:
-
-    ```bash
-    $ (cd tests/Application && bin/console sylius:fixtures:load -e dev)
-    $ (cd tests/Application && bin/console server:run -d public -e dev)
-    ```
+[link-packagist]: https://packagist.org/packages/prometee/sylius-google-recaptcha-v3-plugin
+[link-travis]: https://travis-ci.org/Prometee/SyliusGoogleRecaptchaV3Plugin
+[link-scrutinizer]: https://scrutinizer-ci.com/g/Prometee/SyliusGoogleRecaptchaV3Plugin/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/Prometee/SyliusGoogleRecaptchaV3Plugin
