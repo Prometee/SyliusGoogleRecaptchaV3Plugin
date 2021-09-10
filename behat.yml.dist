@@ -20,9 +20,9 @@ default:
                 symfony:
                     symfony: ~
                 chrome_headless:
-                chrome:
-                        api_url: http://127.0.0.1:9222
-                        validate_certificate: false
+                    chrome:
+                            api_url: http://127.0.0.1:9222
+                            validate_certificate: false
             show_auto: false
 
         FriendsOfBehat\SymfonyExtension:
