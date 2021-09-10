@@ -22,9 +22,7 @@ abstract class AbstractGoogleReCaptchaV3FormExtension extends AbstractTypeExtens
     protected $enabled;
 
     /**
-     * @param bool $enabled
      * @param string[]|null $validationGroups
-     * @param string|null $actionName
      */
     public function __construct(bool $enabled, ?array $validationGroups = null, string $actionName = null)
     {
@@ -33,13 +31,10 @@ abstract class AbstractGoogleReCaptchaV3FormExtension extends AbstractTypeExtens
         $this->validationGroups = $validationGroups;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $validatorOptions = [];
-        if ($this->validationGroups !== null) {
+        if (null !== $this->validationGroups) {
             $validatorOptions['groups'] = $this->validationGroups;
         }
 

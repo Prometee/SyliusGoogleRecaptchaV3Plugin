@@ -11,13 +11,9 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 final class PrometeeSyliusGoogleRecaptchaV3Extension extends Extension
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function load(array $config, ContainerBuilder $container): void
+    public function load(array $configs, ContainerBuilder $container): void
     {
-        $config = $this->processConfiguration($this->getConfiguration([], $container), $config);
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         $loader->load('services.yaml');
     }

@@ -4,35 +4,25 @@ imports:
 
 default:
     extensions:
-        Lakion\Behat\MinkDebugExtension:
+        DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
+
+        FriendsOfBehat\MinkDebugExtension:
             directory: etc/build
             clean_start: false
             screenshot: true
 
         Behat\MinkExtension:
             files_path: "%paths.base%/vendor/sylius/sylius/src/Sylius/Behat/Resources/fixtures/"
-            base_url: "http://localhost:8080/"
+            base_url: "https://127.0.0.1:8080/"
             default_session: symfony
-            javascript_session: chrome
+            javascript_session: chrome_headless
             sessions:
                 symfony:
                     symfony: ~
+                chrome_headless:
                 chrome:
-                    selenium2:
-                        browser: chrome
-                        capabilities:
-                            browserName: chrome
-                            browser: chrome
-                            version: ""
-                            marionette: null # https://github.com/Behat/MinkExtension/pull/311
-                            chrome:
-                                switches:
-                                    - "--start-fullscreen"
-                                    - "--start-maximized"
-                                    - "--no-sandbox"
-                firefox:
-                    selenium2:
-                        browser: firefox
+                        api_url: http://127.0.0.1:9222
+                        validate_certificate: false
             show_auto: false
 
         FriendsOfBehat\SymfonyExtension:
@@ -41,7 +31,3 @@ default:
                 class: Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Application\Kernel
 
         FriendsOfBehat\VariadicExtension: ~
-
-        FriendsOfBehat\SuiteSettingsExtension:
-            paths:
-                - "features"

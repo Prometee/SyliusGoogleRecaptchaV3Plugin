@@ -1,8 +1,10 @@
 <?php
 
-use Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Application\Kernel;
-use Symfony\Component\Debug\Debug;
+declare(strict_types=1);
+
+use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
+use Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Application\Kernel;
 
 require dirname(__DIR__).'/config/bootstrap.php';
 
