@@ -41,6 +41,7 @@ Add or modify the `karser/karser-recaptcha3-bundle` configuration :
 # config/packages/karser_recaptcha3.yaml
 
 karser_recaptcha3:
+    host: 'www.recaptcha.net' # in case 'www.google.com' is not accessible (from China for example)
     site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
     secret_key: '%env(GOOGLE_RECAPTCHA_SECRET)%'
     score_threshold: 0.5
