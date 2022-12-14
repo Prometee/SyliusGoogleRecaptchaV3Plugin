@@ -15,7 +15,7 @@ default:
                 - prometee.sylius.google.recaptcha.v3.behat.context.ui.shop.contact
 
             filters:
-                tags: "@requesting_contact_with_captcha && @ui"
+                tags: "@requesting_contact_with_captcha&&@ui"
 
         ui_customer_registration_with_captcha:
             contexts:
@@ -32,4 +32,4 @@ default:
                 - prometee.sylius.google.recaptcha.v3.behat.context.ui.shop.registration
 
             filters:
-                tags: "@customer_registration_with_captcha && @ui"
+                tags: "@customer_registration_with_captcha&&@ui"
