@@ -26,7 +26,7 @@ final class CaptchaContext implements Context
      *
      * @throws UnexpectedPageException
      */
-    public function iShouldStayOnTheSamePage()
+    public function iShouldStayOnTheSamePage(): void
     {
         $this->page->verify();
     }
