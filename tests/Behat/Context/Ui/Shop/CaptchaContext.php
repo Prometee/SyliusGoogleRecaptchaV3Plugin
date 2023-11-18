@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace Tests\Prometee\SyliusGoogleRecaptchaV3Plugin\Behat\Context\Ui\Shop;
 
 use Behat\Behat\Context\Context;
-use FriendsOfBehat\PageObjectExtension\Page\PageInterface;
+use FriendsOfBehat\PageObjectExtension\Page\SymfonyPageInterface;
 use FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException;
 
 final class CaptchaContext implements Context
 {
-    /** @var PageInterface */
+    /** @var SymfonyPageInterface */
     private $page;
 
     /**
-     * @param PageInterface $page
+     * @param SymfonyPageInterface $page
      */
-    public function __construct(PageInterface $page)
+    public function __construct(SymfonyPageInterface $page)
     {
         $this->page = $page;
     }
@@ -28,6 +28,6 @@ final class CaptchaContext implements Context
      */
     public function iShouldStayOnTheSamePage(): void
     {
-        $this->page->verify();
+        $this->page->verifyRoute();
     }
 }
